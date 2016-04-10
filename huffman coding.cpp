@@ -158,9 +158,11 @@ int main()
     }
 
     int bits=0;
+    int fkd=ceil(log2(counter))*strlen(ar);
+    int asc=strlen(ar)*8;
 
-    cout<<"\nIf ASCII code is used then the number of bits used = "<<strlen(ar)*8<<endl<<endl;
-    cout<<"If Fixed length code is used then number of bits used = "<<ceil(log2(counter))*strlen(ar)<<endl<<endl;
+    cout<<"\nIf ASCII code is used then the number of bits used = "<<asc<<endl<<endl;
+    cout<<"If Fixed length code is used then number of bits used = "<<fkd<<endl<<endl;
     cout<<"Huffman codes generated are\n\n";
     print(n3,arr,0);
     for(int i=0; i<260; i++)
@@ -171,5 +173,13 @@ int main()
         }
     }
     cout<<"\nIf Huffman code is used then the number of bits used =";
-    cout<<bits<<endl;
+    cout<<bits<<endl<<endl;
+    double kk=fkd-bits;
+    kk=kk/(double)fkd;
+    kk*=100;
+    cout<<"COMPRESSION RATIO w.r.t. Fixed length code = "<<kk<<"%"<<endl<<endl;
+    kk=asc-bits;
+    kk=kk/(double)asc;
+    kk*=100;
+    cout<<"COMPRESSION RATIO w.r.t. ASCII code = "<<kk<<"%"<<endl;
 }
